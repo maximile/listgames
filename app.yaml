@@ -1,0 +1,10 @@
+application: listgames
+version: 1
+api_version: 1
+runtime: python
+
+handlers:
+- url: /newgame
+  script: viewcontroller.newgame
+- url: /
+  script: viewcontroller.main
