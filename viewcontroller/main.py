@@ -8,10 +8,7 @@ class Handler(webapp2.RequestHandler):
         template = Template(template_source)
         substitutions = {}
         
-        # Create a list of game names linking to their pages
-        games = model.game.get_games()
-        names = [game.name for game in games]
-        
+        # Create a list of game names linking to their pages        
         substitutions["gamelist"] = get_game_link_list()
         output = template.substitute(substitutions)
         
@@ -24,7 +21,7 @@ def get_game_link_list():
     items = []
     for game in games:
         items.append('<li><a href="%s">%s</a></li>' %
-                     (game.get_url(), game.name))
+                     (game.get_url(), game.get_name()))
     
     return "\n".join(items)
 
