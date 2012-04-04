@@ -6,5 +6,7 @@ runtime: python
 handlers:
 - url: /newgame
   script: viewcontroller.newgame
+- url: /.+
+  script: viewcontroller.game
 - url: /
   script: viewcontroller.main
