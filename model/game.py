@@ -1,4 +1,5 @@
 from google.appengine.ext import db
+import util.numberwords
 import re
 
 VALID_NAME = re.compile("[a-z0-9]{3,100}$")
@@ -8,6 +9,7 @@ class Game(db.Model):
     
     """    
     date = db.DateTimeProperty(auto_now_add=True)
+    title = db.DateTimeProperty(auto_now_add=True)
     
     def get_url(self):
         return "/%s" % self.get_name()
@@ -24,3 +26,20 @@ def validate_name(name):
     """
     if not VALID_NAME.match(name):
         raise ValueError("Game name must match: %s" % VALID_NAME.pattern)
+
+def validate_title(title):
+    """Make sure the title has a number in it and no unwanted characters.
+    
+    """
+    # Make sure it contains a number written in words
+    for number in xrange(1, 1000):
+        if util.numberwords.int_to_words(number) in title:
+            break
+    else:
+        raise ValueError("Title must contain a number, written in words")
+    
+    if title == title.strip():
+        raise ValueError("Title has whitespace at beginning or end")
+    
+    
+    
