@@ -18,7 +18,10 @@ class Game(db.Model):
         return self.key().name()
 
 def get_games():
-    return db.GqlQuery("SELECT * FROM Game")    
+    results = db.GqlQuery("SELECT * FROM Game").fetch(limit=1000)
+    if len(results) == 1000:
+        raise RuntimeError("Too many games!")
+    return results
 
 def validate_name(name):
     """Check the game name for length and invalid characters.

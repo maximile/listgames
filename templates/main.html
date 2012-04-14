@@ -1,12 +1,46 @@
 <!DOCTYPE HTML>
-<html>
-<body>
+<html> 
+<head> 
+    <title>listgames</title> 
+    <link rel="stylesheet" href="static/screen.css" type="text/css" media="screen" charset="utf-8" /> 
 
-<ul>
-$gamelist
-</ul>
+    <script type="text/javascript" charset="utf-8" src="lists.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="listgames.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="home.js"></script> 
+</head> 
+ 
+<body class="home"> 
+    <div id="stripe"> 
+        <div>
+            <h1><a href="#">list<em>games</em></a></h1>
+            <div>
+                <h2>Welcome to listgames.</h2>
+                <h2><em>$game_count</em> games and counting…</h2>
+            </div>
+        </div>
+    </div>
 
-<a href="/newgame">Create new game</a>
+    <div id="list">
+        <div>
+            <p>Enter the items in the list before time runs out.</p>
+            <p>Popular games:</p>
+            <ul>
+                <li><a href="/states">The <em>fifty</em> states of the United States of America</a></li>
+                <li><a href="/tubelines">The <em>twelve</em> lines on the London Underground</a></li>
+                <li><a href="/ukcities">The <em>twenty</em> largest cities in the United Kingdom</a></li>
+                <li><a href="/doctorswho">The <em>ten</em> actors who played the Doctors Who</a></li>
+                <li><a href="/f1drivers2007">The <em>twenty-two</em> drivers competing in the 2007 Formula One Championship</a></li>
+            </ul>
+            <p>All games:</p>
+            <form id="menuplace" action="#" method="get" accept-charset="utf-8"></form>
+            <p>Random game:</p>
+            <a id="therandom" href="#" accesskey="x"></a>
+            <p>New games:</p>
+            <ul id="newgames">
 
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
+

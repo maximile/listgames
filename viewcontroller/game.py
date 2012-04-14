@@ -1,6 +1,7 @@
 from string import Template
 import model.game
 import webapp2
+from google.appengine.api import users
 
 class Handler(webapp2.RequestHandler):
     def get(self, name):
@@ -13,6 +14,15 @@ class Handler(webapp2.RequestHandler):
         if not game:
             self.error(404)
             self.response.out.write("Game not found.")
+            
+            # If an admin is logged in, let them create the game            
+            user = users.get_current_user()
+            if user:
+                new_game_message = '<a href="Create a new game called \'%s\'?">'
+                self.response.out.write("Create a new game called '%s'?" %
+                                        name)
+                
+
             return
         
         # Load the template
